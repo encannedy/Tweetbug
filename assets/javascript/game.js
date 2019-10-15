@@ -34,12 +34,20 @@ document.addEventListener("DOMContentLoaded",
             reset();
             $("#winsText").text(wins);
         }
+
         else if (userScore > targetNumber) {
             alert("You lose!");
             reset();
             losses++;
             $("#lossesText").text(losses);
-
-
         }
-    });
+            
+            $(".crystals").on("click", function () {
+                userTotal = userTotal + crystals;
+                $("#total-score").text(userScore);
+                console.log(userScore);
+                run();
+            }
+
+        // onclick not working entirely
+        });
