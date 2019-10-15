@@ -1,27 +1,45 @@
 document.addEventListener("DOMContentLoaded",
     function () {
+        var targetNumber;
         var wins = 0;
         var loses = 0;
         var userScore = 0;
-        var topaz = Math.floor(Math.random() * (12-1) +1);
-        var peridot = Math.floor(Math.random() * (12-1) +1);
-        var ruby = Math.floor(Math.random() * (12-1) +1);
-        var amethyst = Math.floor(Math.random() * (12-1) +1);
-
-        var cpuGuess = Math.floor(Math.random() * (120 - 19) + 19);
-
-
         var winsText = $("#winsText");
-        var losesText = $("#losesText"); 
+        var losesText = $("#losesText");
 
-        $("#total-score").click = function (event) {
-            userScore = event.key;
-            if (userScore === cpuGuess) {
-                wins = wins + 1;
-                winsText.textContent = wins;
-                cpuGuess = Math.floor(Math.random() * 2);
-                console.log(cpuGuess);
-                console.log (topaz);
-            }
+
+        function reset() {
+            var crystals = Math.floor(Math.random() * 11 + 1);
+            var cpuGuess = Math.floor(Math.random() * 101 + 19);
+            userScore = 0;
+            $("#total-score").text(userScore);
+            $("#cpuGuess").text(targetNumber);
+        }
+
+        function start() {
+            crystals = Math.floor(Math.random() * 11 + 1);
+            //create a for loop so that a random number is created for each crystal
+            targetNumber = Math.floor(Math.random() * 101 + 19);
+            $("#cpuGuess").text(targetNumber);
+            $("#winsText").text(wins);
+            $("#lossesText").text(losses);
+            $("#total-score").text(userScore);
+        }
+
+        function run() {
+
+        } if (userScore === cpuGuess) {
+            alert("You win@");
+            wins++;
+            reset();
+            $("#winsText").text(wins);
+        }
+        else if (userScore > targetNumber) {
+            alert("You lose!");
+            reset();
+            losses++;
+            $("#lossesText").text(losses);
+
+
         }
     });
